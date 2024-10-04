@@ -8,40 +8,59 @@ public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String[] iSBN = new String[10], judukBuku = new String[10], penulis = new String[10], penerbit = new String[10], formatBuku = new String[10], kategori = new String[10];
-        double[] tahunTerbit = new double[10], stok = new double[10];
-        double[] hargaPembelian = new double[10], minimumMargin = new double[10], rating = new double[10];
+        String kodeisbn, judul, penulis, penerbit, formatBuku, jenisdiskon, conclusion;
+        String kategori;
+        int tahunterbit, stok;
+        double hargapembelian, minimummargin, rating;
 
-        // do {
-            iSBN = input.nextLine();
-            judukBuku = input.nextLine();
+        kodeisbn = input.nextLine();
+        while (!kodeisbn.equals("---")) {
+            judul = input.nextLine();
             penulis = input.nextLine();
-            tahunTerbit = Double.parseDouble(input.nextLine());
+            tahunterbit = Integer.parseInt(input.nextLine());
             penerbit = input.nextLine();
             formatBuku = input.nextLine();
-            hargaPembelian = Double.parseDouble(input.nextLine());
-            minimumMargin = Double.parseDouble(input.nextLine());
-            stok = Double.parseDouble(input.nextLine());
+            hargapembelian = Double.parseDouble(input.nextLine());
+            minimummargin = Double.parseDouble(input.nextLine());
+            if (-(minimummargin / hargapembelian) > 0.4) {
+                jenisdiskon = "Once in a lifetime";
+            } else {
+                if (0.2 < -(minimummargin / hargapembelian) && minimummargin / hargapembelian < 0.4) {
+                    jenisdiskon = "never come twice";
+                } else {
+                    if (-minimummargin / hargapembelian <= 0.2 && -minimummargin / hargapembelian > 0) {
+                        jenisdiskon = "No regret";
+                    } else {
+                        jenisdiskon = "---";
+                    }
+                }
+            }
+            stok = Integer.parseInt(input.nextLine());
             rating = Double.parseDouble(input.nextLine());
-            if (rating >= 4.7 && rating <= 5) {
-                kategori = "BestPick";
+            if (rating >= 4.7) {
+                kategori = "Best Pick";
             } else {
                 if (rating >= 4.5) {
-                    kategori = "MustRead";
+                    kategori = "Must Read";
                 } else {
                     if (rating >= 4.0) {
                         kategori = "Recommended";
                     } else {
                         if (rating >= 3.0) {
-                            kategori = "Low";
+                            kategori = "Average";
                         } else {
-                            kategori = "Error";
+                            kategori = "Low";
                         }
                     }
                 }
             }
-        // } while (Conditional);
-        System.out.println(iSBN + "|" + JudulBuku + "|" + penulis + "|" + tahunTerbit + "|" + penerbit + "|" + formatBuku + "|" + hargaPembelian + "|" + minimumMargin + "|" + stok + "|" + rating + "|" + kategori);
+            if (jenisdiskon.equals("Once in a lifetime") && kategori.equals("Best Pick")) {
+                kategori = "The Ultimate Best";
+            } else {
+                kategori = "---";
+            }
+            kodeisbn = input.nextLine();
+            System.out.println(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatBuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + rating + "|" + kategori + "|" + jenisdiskon);
+        }
     }
 }
-
