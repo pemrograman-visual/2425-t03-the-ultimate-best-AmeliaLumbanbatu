@@ -1,37 +1,34 @@
 // 12S24031 - Amelia Renata Lumbanbatu
 // 12S24025 - Paula Gevriella Tambunan
 
-import java.util.*;
-import java.lang.Math;
 
 public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String kodeisbn, judul, penulis, penerbit, formatbuku, jenisdiskon, conclusion;
-        String kategori;
-        int tahunterbit, stok;
-        double hargapembelian, minimummargin, rating;
+        int stok;
+        String judulBuku, penulis, penerbit, formatBukuElektronik, iSBN, kategori, tahunTerbit, jenisDiskon, kesimpulan;
+        double hargaPembelian, minimumMargin, rating;
 
-        kodeisbn = input.nextLine();
-        while (!kodeisbn.equals("---")) {
-            judul = input.nextLine();
+        iSBN = input.nextLine();
+        while (!iSBN.equals("---")) {
+            judulBuku = input.nextLine();
             penulis = input.nextLine();
-            tahunterbit = Integer.parseInt(input.nextLine());
+            tahunTerbit = input.nextLine();
             penerbit = input.nextLine();
-            formatbuku = input.nextLine();
-            hargapembelian = Double.parseDouble(input.nextLine());
-            minimummargin = Double.parseDouble(input.nextLine());
-            if (-(minimummargin / hargapembelian) > 0.4) {
-                jenisdiskon = "Once in a lifetime";
+            formatBukuElektronik = input.nextLine();
+            hargaPembelian = Double.parseDouble(input.nextLine());
+            minimumMargin = Double.parseDouble(input.nextLine());
+            if (-(minimumMargin / hargaPembelian) > 0.4) {
+                jenisDiskon = "Once in a lifetime";
             } else {
-                if (0.2 < -(minimummargin / hargapembelian) && minimummargin / hargapembelian < 0.4) {
-                    jenisdiskon = "Never come twice";
+                if (0.2 < -(minimumMargin / hargaPembelian) && minimumMargin / hargaPembelian < 0.4) {
+                    jenisDiskon = "Never come twice";
                 } else {
-                    if (-minimummargin / hargapembelian <= 0.2 && -minimummargin / hargapembelian > 0) {
-                        jenisdiskon = "No regret";
+                    if (-(minimumMargin / hargaPembelian) <= 0.2 && -(minimumMargin / hargaPembelian) > 0) {
+                        jenisDiskon = "No regret";
                     } else {
-                        jenisdiskon = "---";
+                        jenisDiskon = "---";
                     }
                 }
             }
@@ -40,27 +37,31 @@ public class T03 {
             if (rating >= 4.7) {
                 kategori = "Best Pick";
             } else {
-                if (rating >= 4.5) {
+                if (rating >= 4.5 && rating < 4.7) {
                     kategori = "Must Read";
                 } else {
-                    if (rating >= 4.0) {
+                    if (rating >= 4.0 && rating < 4.5) {
                         kategori = "Recommended";
                     } else {
-                        if (rating >= 3.0) {
+                        if (rating >= 3.0 && rating < 4.0) {
                             kategori = "Average";
                         } else {
-                            kategori = "Low";
+                            if (rating < 3.0) {
+                                kategori = "Low";
+                            } else {
+                                kategori = "Low";
+                            }
                         }
                     }
                 }
             }
-            if (jenisdiskon.equals("Once in a lifetime") && kategori.equals("Best Pick")) {
-                kategori = "The Ultimate Best";
+            if (jenisDiskon.equals("Once in a lifetime") && kategori.equals("Best Pick")) {
+                kesimpulan = "The Ultimate Best";
             } else {
-                kategori = "---";
+                kesimpulan = "---";
             }
-            System.out.println(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + rating + "|" + kategori + "|" + jenisdiskon);
-            kodeisbn = input.nextLine();
+            System.out.println(iSBN + "|" + judulBuku + "|" + penulis + "|" + tahunTerbit + "|" + penerbit + "|" + formatBukuElektronik + "|" + hargaPembelian + "|" + minimumMargin + "|" + stok + "|" + rating + "|" + kategori + "|" + jenisDiskon + "|" + kesimpulan);
+            iSBN = input.nextLine();
         }
     }
 }
