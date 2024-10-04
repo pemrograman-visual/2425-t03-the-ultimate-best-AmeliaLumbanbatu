@@ -1,7 +1,6 @@
 // 12S24031 - Amelia Renata Lumbanbatu
 // 12S24025 - Paula Gevriella Tambunan
 
-
 import java.util.*;
 import java.lang.Math;
 
@@ -9,7 +8,7 @@ public class T03 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String kodeisbn, judul, penulis, penerbit, formatBuku, jenisdiskon, conclusion;
+        String kodeisbn, judul, penulis, penerbit, formatbuku, jenisdiskon, conclusion;
         String kategori;
         int tahunterbit, stok;
         double hargapembelian, minimummargin, rating;
@@ -20,14 +19,14 @@ public class T03 {
             penulis = input.nextLine();
             tahunterbit = Integer.parseInt(input.nextLine());
             penerbit = input.nextLine();
-            formatBuku = input.nextLine();
+            formatbuku = input.nextLine();
             hargapembelian = Double.parseDouble(input.nextLine());
             minimummargin = Double.parseDouble(input.nextLine());
             if (-(minimummargin / hargapembelian) > 0.4) {
                 jenisdiskon = "Once in a lifetime";
             } else {
                 if (0.2 < -(minimummargin / hargapembelian) && minimummargin / hargapembelian < 0.4) {
-                    jenisdiskon = "never come twice";
+                    jenisdiskon = "Never come twice";
                 } else {
                     if (-minimummargin / hargapembelian <= 0.2 && -minimummargin / hargapembelian > 0) {
                         jenisdiskon = "No regret";
@@ -60,8 +59,8 @@ public class T03 {
             } else {
                 kategori = "---";
             }
+            System.out.println(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatbuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + rating + "|" + kategori + "|" + jenisdiskon);
             kodeisbn = input.nextLine();
-            System.out.println(kodeisbn + "|" + judul + "|" + penulis + "|" + tahunterbit + "|" + penerbit + "|" + formatBuku + "|" + hargapembelian + "|" + minimummargin + "|" + stok + "|" + rating + "|" + kategori + "|" + jenisdiskon);
         }
     }
 }
